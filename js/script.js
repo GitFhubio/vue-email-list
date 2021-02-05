@@ -6,16 +6,18 @@
 new Vue({
   el: '#app',
   data: {
-    numRand: 0
+    email_list:[]
   },
   mounted() {
     const self = this;
-    console.log('ho montato l\'app');
-    axios.get('https://flynn.boolean.careers/exercises/api/random/int')
-      .then(function(resp) {
-        console.log('risposta vue', resp.data);
-        self.numRand = resp.data.response;
-      });
+    for (var i = 0; i < 10; i++) {
+      axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+        .then(function(resp) {
+          console.log(resp);
+          self.email_list.push(resp.data.response);
+        });
+    }
+    console.log(self.email_list);
   }
 
 })
