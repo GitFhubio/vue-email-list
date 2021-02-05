@@ -12,10 +12,11 @@ new Vue({
     const self = this;
     for (var i = 0; i < 10; i++) {
       axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-        .then(function(resp) {
-          console.log(resp);
-          self.email_list.push(resp.data.response);
-        });
+      .then(function(resp) {
+        console.log(resp);
+        email=resp.data.response;
+        self.email_list.push(email);
+      })
     }
     console.log(self.email_list);
   }
